@@ -1,0 +1,24 @@
+{
+  "overview": "FPay is a demo digital payment app for learning and demonstration. It simulates a complete payment experience with user accounts, virtual balance, QR code payments, transaction history, and shareable receipts — all clearly labeled as demo with no real money involved.",
+  "features": [
+    "Login & signup with local user accounts",
+    "Virtual wallet with ₹10,000 default balance",
+    "Send money via phone number, user ID, or QR code scan",
+    "QR code generation and scanning",
+    "Transaction history with detailed cards",
+    "Animated payment processing screen",
+    "Shareable payment receipt with DEMO label",
+    "Dark gradient theme with smooth animations",
+    "DEMO disclaimer on all screens"
+  ],
+  "category": "productivity",
+  "tags": [
+    "payments",
+    "demo",
+    "fintech",
+    "mobile",
+    "qr-code",
+    "wallet"
+  ],
+  "last_updated": "2026-04-27T13:22:10.973Z"
+}

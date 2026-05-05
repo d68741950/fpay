@@ -1,0 +1,77 @@
+type UserPublic = 
+ record {
+   balance: nat;
+   name: text;
+   phone: Phone;
+   userId: UserId;
+ };
+type UserId = text;
+type TxError = 
+ variant {
+   insufficientBalance;
+   invalidAmount;
+   invalidPin;
+   receiverNotFound;
+   selfTransfer;
+   senderNotFound;
+ };
+type Transaction = 
+ record {
+   amount: nat;
+   receiverId: UserId;
+   senderId: UserId;
+   status: text;
+   timestamp: Timestamp;
+   txId: text;
+ };
+type Timestamp = int;
+type SendMoneyRequest = 
+ record {
+   amount: nat;
+   pin: text;
+   receiverIdentifier: text;
+   senderId: UserId;
+ };
+type Result_2 = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Result_1 = 
+ variant {
+   err: AuthError;
+   ok: UserPublic;
+ };
+type Result = 
+ variant {
+   err: TxError;
+   ok: Transaction;
+ };
+type RegisterRequest = 
+ record {
+   name: text;
+   password: text;
+   phone: Phone;
+   pin: text;
+ };
+type Phone = text;
+type LoginRequest = 
+ record {
+   password: text;
+   phone: Phone;
+ };
+type AuthError = 
+ variant {
+   invalidCredentials;
+   phoneTaken;
+   userNotFound;
+ };
+service : {
+  applyInterest: (userId: UserId) -> (Result_2);
+  getBalance: (userId: UserId) -> (opt nat) query;
+  getTransactions: (userId: UserId) -> (vec Transaction) query;
+  getUser: (identifier: text) -> (opt UserPublic) query;
+  login: (req: LoginRequest) -> (Result_1);
+  register: (req: RegisterRequest) -> (Result_1);
+  sendMoney: (req: SendMoneyRequest) -> (Result);
+}
